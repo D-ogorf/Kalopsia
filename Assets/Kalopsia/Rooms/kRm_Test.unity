@@ -979,7 +979,6 @@ MonoBehaviour:
   curStamina: 0
   timeToRegenStamina: 1.5
   curStaminaRegenTime: 0
-  gravityForce: 150
   _clampVelocityX: 1
   _clampVelocityY: 1
   timeSinceNotGrounded: 0
@@ -989,7 +988,9 @@ MonoBehaviour:
   lastUpDown: 0
   jumpInt: 0
   dashInt: 0
+  gravityForce: 150
   settings: {fileID: 0}
+  universal: {fileID: 0}
   rb: {fileID: 0}
 --- !u!50 &852819060
 Rigidbody2D:
@@ -1138,6 +1139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1310647204}
+  - component: {fileID: 1310647205}
   m_Layer: 0
   m_Name: Scn_Man
   m_TagString: Untagged
@@ -1160,6 +1162,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1310647205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310647201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb620a645b041dc4d88ccaaa6d0adcda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Set_Uni
+  gravityForce: 150
 --- !u!1 &1751822244
 GameObject:
   m_ObjectHideFlags: 0

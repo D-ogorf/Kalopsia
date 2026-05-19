@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -61,7 +62,8 @@ public class mCh_Mov : MonoBehaviour
 
     [HideInInspector] public float gravityForce = 150; // Força com que a gravidade puxa para baixo
 
-    [HideInInspector] public Set settings;
+    [HideInInspector] public Set_mCh settings;
+    [HideInInspector] public Set_Uni universal;
     [HideInInspector] public Rigidbody2D rb;
 
     void Start()
@@ -71,6 +73,7 @@ public class mCh_Mov : MonoBehaviour
 
     private void Initiallizer()
     {
+        this.universal = GameObject.Find("Scn_Man").GetComponent<Set_Uni>();
         this.rb = this.GetComponent<Rigidbody2D>();
     }
     void Update()
@@ -105,15 +108,15 @@ public class mCh_Mov : MonoBehaviour
         if(Input.GetKey(this.settings.left)) 
         {
             this.leftRightInt = -1;
-            this.lastLeftRight = -1;
+            this.lastLeftRight = this.leftRightInt;
         }
 
         if(!Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right)) this.leftRightInt = 0;
-        
+
         if(Input.GetKey(this.settings.right)) 
         {
             this.leftRightInt = 1;
-            this.lastLeftRight = 1;
+            this.lastLeftRight = this.leftRightInt;
         }
     }
 
@@ -163,7 +166,7 @@ public class mCh_Mov : MonoBehaviour
 
     private void StaminaHandler()
     {
-        if(this.curStamina < this.maxStamina) this.curStaminaRegenTime += Time.deltaTime;
+        if(this.curStamina < this.maxStamina && !this._isDashing) this.curStaminaRegenTime += Time.deltaTime;
         else return;
 
         if (this.curStaminaRegenTime >= this.timeToRegenStamina)
@@ -198,6 +201,7 @@ public class mCh_Mov : MonoBehaviour
     {
         float t = 0;
 
+        this.curStamina -= 1;
         while(t <= this.maxDashTime)
         {
             t += Time.deltaTime;
@@ -208,8 +212,6 @@ public class mCh_Mov : MonoBehaviour
             if(t > .1f && this.rb.linearVelocityX == 0) break;
             yield return null;
         }
-
-        this.curStamina -= 1;
         this._clampVelocityX = true;
         this.dashInt = 0;
 
@@ -238,7 +240,7 @@ public class mCh_Mov : MonoBehaviour
 
     private void GravityPull()
     {
-        if(!this._canJump) this.rb.AddForce(this.gravityForce * -this.transform.up);
+        if(!this._canJump) this.rb.AddForce(universal.gravityForce * -this.transform.up);
     }
 
     private void VelocityCalc()

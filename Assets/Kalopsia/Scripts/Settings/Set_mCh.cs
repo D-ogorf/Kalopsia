@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using UnityEngine;
 // Transformara em scriptable object
-public class Set : MonoBehaviour
+public class Set_mCh : MonoBehaviour
 {
     public int loadOptionInt = 0;
     public KeyCode up; // Cima
@@ -36,6 +36,6 @@ public class Set : MonoBehaviour
 
     private void TransferSettings()
     {
-        this.GetComponent<mCh_Mov>().settings = this.GetComponent<Set>();
+        this.GetComponent<mCh_Mov>().settings = this.GetComponent<Set_mCh>();
     }
 }
