@@ -44,7 +44,7 @@ public class mCh_Mov : MonoBehaviour
     [Header("Stamina")]
     public int maxStamina = 3; // Stamina máxima
     public int curStamina; // Stamina atual
-    public float timeToRegenStamina = 1.5f; // Tempo que demora para regenerar uma barra de stamina
+    public float timeToRegenStamina = 1.15f; // Tempo que demora para regenerar uma barra de stamina
     public float curStaminaRegenTime; // Tempo de regeneração do dash atual
 
     [Header("Misc")]
@@ -59,8 +59,6 @@ public class mCh_Mov : MonoBehaviour
     [HideInInspector] public sbyte lastUpDown; // Última direção (Cima/Baixo)
     [HideInInspector] public sbyte jumpInt = 0; // Int do pulo
     [HideInInspector] public sbyte dashInt = 0; // Int do dash
-
-    [HideInInspector] public float gravityForce = 150; // Força com que a gravidade puxa para baixo
 
     [HideInInspector] public Set_mCh settings;
     [HideInInspector] public Set_Uni universal;
