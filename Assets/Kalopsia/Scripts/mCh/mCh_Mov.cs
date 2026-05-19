@@ -1,9 +1,5 @@
 using System.Collections;
-using NUnit.Framework.Interfaces;
-using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.XR;
 
 public class mCh_Mov : MonoBehaviour
 {
@@ -64,7 +60,7 @@ public class mCh_Mov : MonoBehaviour
     [HideInInspector] public sbyte dashInt = 0; // Int do dash
 
     [HideInInspector] public float gravityForce = 150; // Força com que a gravidade puxa para baixo
-    
+
     [HideInInspector] public Set settings;
     [HideInInspector] public Rigidbody2D rb;
 
