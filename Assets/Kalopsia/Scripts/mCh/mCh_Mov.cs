@@ -26,7 +26,7 @@ public class mCh_Mov : MonoBehaviour
     public float maxJumpTime = .4f; // Tempo máximo que pode pular
     public float airMultiplier = .5f; // Multiplicador no ar
     public float jumpBuffer = .125f; // Buffer de pulo
-    public float coyoteTime = .075f; // Coyote time
+    public float coyoteTime = .125f; // Coyote time
 
     public bool _isJumping; // Está pulando?
     public bool _wantJump; // Quer pular?
@@ -49,19 +49,22 @@ public class mCh_Mov : MonoBehaviour
     public int curStamina; // Stamina atual
     public float timeToRegenStamina = 1.5f; // Tempo que demora para regenerar uma barra de stamina
     public float curStaminaRegenTime; // Tempo de regeneração do dash atual
-    public float gravityForce = 150; // Força com que a gravidade puxa para baixo
 
     [Header("Misc")]
     public bool _clampVelocityX = true; // Limitar velocidade X?
     public bool _clampVelocityY = true; // Limitar velocidade Y?
 
     [HideInInspector] public float timeSinceNotGrounded; // Tempo desde que não está no chão
+
     [HideInInspector] public sbyte leftRightInt; // Direção atual (Esquerda/Direita)
     [HideInInspector] public sbyte lastLeftRight = 1; // Última direção (Esquerda/Direita)
     [HideInInspector] public sbyte upDownInt; // Direção atual (Cima/Baixo)
     [HideInInspector] public sbyte lastUpDown; // Última direção (Cima/Baixo)
     [HideInInspector] public sbyte jumpInt = 0; // Int do pulo
     [HideInInspector] public sbyte dashInt = 0; // Int do dash
+
+    [HideInInspector] public float gravityForce = 150; // Força com que a gravidade puxa para baixo
+    
     [HideInInspector] public Set settings;
     [HideInInspector] public Rigidbody2D rb;
 

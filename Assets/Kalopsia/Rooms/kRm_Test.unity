@@ -951,36 +951,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::mCh_Mov
   maxMovSpeed: 60
-  maxVelocityX: 7.5
-  maxVelocityY: 10
   curMovSpeed: 0
+  maxVelocityX: 7.5
   acceleration: 0.575
   deceleration: 0.885
-  airMultiplier: 0.5
+  _isGrounded: 0
+  _isWalking: 0
+  _canWalk: 0
   jumpForce: 400
+  maxVelocityY: 10
   maxJumpTime: 0.4
+  airMultiplier: 0.5
+  jumpBuffer: 0.125
+  coyoteTime: 0.075
+  _isJumping: 0
+  _wantJump: 0
+  _canJump: 0
   dashForce: 230
   maxDashTime: 0.2
+  timeToUseDash: 0.45
+  dashBuffer: 0.125
+  _isDashing: 0
+  _wantDash: 0
+  _isDashInCD: 0
+  _canDash: 1
   maxStamina: 3
   curStamina: 0
   timeToRegenStamina: 1.5
   curStaminaRegenTime: 0
   gravityForce: 150
-  jumpBuffer: 0.125
-  coyoteTime: 0.075
-  dashBuffer: 0.125
-  timeSinceNotGrounded: 0
-  _isGrounded: 0
-  _isWalking: 0
-  _canWalk: 0
-  _isJumping: 0
-  _wantJump: 0
-  _canJump: 0
-  _isDashing: 0
-  _wantDash: 0
-  _canDash: 1
   _clampVelocityX: 1
   _clampVelocityY: 1
+  timeSinceNotGrounded: 0
   leftRightInt: 0
   lastLeftRight: 1
   upDownInt: 0
