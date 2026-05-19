@@ -258,8 +258,8 @@ public class mCh_Mov : MonoBehaviour
     {
         this.rb.AddForce
         (
-            this.curMovSpeed * this.transform.right * Mathf.Abs(this.leftRightInt) +
-            this.jumpForce * this.jumpInt * this.transform.up +
+            this.curMovSpeed * this.transform.right * Mathf.Abs(this.leftRightInt) +    // Isso só tá dessa forma porque
+            this.jumpForce * this.jumpInt * this.transform.up +                         // fica feio se tiver tudo seguido
             this.dashForce * this.dashInt * this.transform.right
         );
 
