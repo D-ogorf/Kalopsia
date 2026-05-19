@@ -7,54 +7,61 @@ using UnityEngine.XR;
 
 public class mCh_Mov : MonoBehaviour
 {
-    [Header("Data")]
+    [Header("Move")]
     public float maxMovSpeed = 60; // Velocidade de movimento máxima
-    public float maxVelocityX = 7.5f; // Velocidade máxima X
-    public float maxVelocityY = 10; // Velocidade máxima Y
     public float curMovSpeed; // Velocidade de movimento atual
+
+    public float maxVelocityX = 7.5f; // Velocidade máxima X
     [Range(0, 1)] public float acceleration = .575f; // Tempo que demora para acelerar
     [Range(0, 1)] public float deceleration = .885f; // Tempo que demora para desacelerar
-    public float airMultiplier = .5f; // Multiplicador no ar
-    public float jumpForce = 400; // Força do pulo
-    public float maxJumpTime = .4f; // Tempo máximo que pode pular
-    public float dashForce = 230; // Força do dash
-    public float maxDashTime = .2f; // Tempo máximo que pode dar dash
-    public int maxStamina = 3; // Stamina máxima
-    public int curStamina; // Stamina atual
-    public float timeToRegenStamina = 1.5f; // Tempo que demora para regenerar uma barra de stamina
-    public float timeToUseDash = .75f; // Tempo que demora para poder usar dash
-    public float curStaminaRegenTime; // Tempo de regeneração do dash atual
-    public float gravityForce = 150; // Força com que a gravidade puxa para baixo
 
-    [Header("Buffers")]
-    public float jumpBuffer = .125f; // Buffer de pulo
-    public float coyoteTime = .075f; // Coyote time
-    public float dashBuffer = .125f; // Buffer de dash
-    [HideInInspector] public float timeSinceNotGrounded; // Tempo desde que não está no chão
-
-    [Header("States")]
     public bool _isGrounded; // Está no chão?
     public bool _isWalking; // Está andando?
     public bool _canWalk; // Pode andar
+
+    [Header("Jump")]
+    public float jumpForce = 400; // Força do pulo
+    public float maxVelocityY = 10; // Velocidade máxima Y
+
+    public float maxJumpTime = .4f; // Tempo máximo que pode pular
+    public float airMultiplier = .5f; // Multiplicador no ar
+    public float jumpBuffer = .125f; // Buffer de pulo
+    public float coyoteTime = .075f; // Coyote time
+
     public bool _isJumping; // Está pulando?
     public bool _wantJump; // Quer pular?
     public bool _canJump; // Pode pular?
+
+    [Header("Dash")]
+    public float dashForce = 230; // Força do dash
+
+    public float maxDashTime = .2f; // Tempo máximo que pode dar dash
+    public float timeToUseDash = .45f; // Tempo que demora para poder usar dash
+    public float dashBuffer = .125f; // Buffer de dash
+
     public bool _isDashing; // Está dando dash?
     public bool _wantDash; // Quer dar dash?
     public bool _isDashInCD; // Dash está em cooldown?
     public bool _canDash = true; // Pode dar dash?
+    
+    [Header("Stamina")]
+    public int maxStamina = 3; // Stamina máxima
+    public int curStamina; // Stamina atual
+    public float timeToRegenStamina = 1.5f; // Tempo que demora para regenerar uma barra de stamina
+    public float curStaminaRegenTime; // Tempo de regeneração do dash atual
+    public float gravityForce = 150; // Força com que a gravidade puxa para baixo
+
+    [Header("Misc")]
     public bool _clampVelocityX = true; // Limitar velocidade X?
     public bool _clampVelocityY = true; // Limitar velocidade Y?
 
-    [Header("Input")]
-    public sbyte leftRightInt; // Direção atual (Esquerda/Direita)
-    public sbyte lastLeftRight = 1; // Última direção (Esquerda/Direita)
-    public sbyte upDownInt; // Direção atual (Cima/Baixo)
+    [HideInInspector] public float timeSinceNotGrounded; // Tempo desde que não está no chão
+    [HideInInspector] public sbyte leftRightInt; // Direção atual (Esquerda/Direita)
+    [HideInInspector] public sbyte lastLeftRight = 1; // Última direção (Esquerda/Direita)
+    [HideInInspector] public sbyte upDownInt; // Direção atual (Cima/Baixo)
     [HideInInspector] public sbyte lastUpDown; // Última direção (Cima/Baixo)
-    public sbyte jumpInt = 0; // Int do pulo
-    public sbyte dashInt = 0; // Int do dash
-
-    [Header("Components")]
+    [HideInInspector] public sbyte jumpInt = 0; // Int do pulo
+    [HideInInspector] public sbyte dashInt = 0; // Int do dash
     [HideInInspector] public Set settings;
     [HideInInspector] public Rigidbody2D rb;
 
