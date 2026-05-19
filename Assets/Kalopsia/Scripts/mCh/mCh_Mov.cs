@@ -17,7 +17,7 @@ public class mCh_Mov : MonoBehaviour
     public float airMultiplier = .5f; // Multiplicador no ar
     public float jumpForce = 400; // Força do pulo
     public float maxJumpTime = .4f; // Tempo máximo que pode pular
-    public float dashForce = 330; // Força do dash
+    public float dashForce = 230; // Força do dash
     public float maxDashTime = .2f; // Tempo máxximo que pode dar dash
     public int maxStamina = 3; // Stamina máxima
     public int curStamina; // Stamina atual
@@ -49,8 +49,8 @@ public class mCh_Mov : MonoBehaviour
     public sbyte lastLeftRight = 1; // Última direção (Esquerda/Direita)
     public sbyte upDownInt; // Direção atual (Cima/Baixo)
     [HideInInspector] public sbyte lastUpDown; // Última direção (Cima/Baixo)
-    public sbyte jumpInt = 0;
-    public sbyte dashInt = 0;
+    public sbyte jumpInt = 0; // Int do pulo
+    public sbyte dashInt = 0; // Int do dash
 
     [Header("Components")]
     [HideInInspector] public Set settings;
@@ -82,29 +82,31 @@ public class mCh_Mov : MonoBehaviour
         this._isWalking = this.rb.linearVelocityX != 0;
         this._isJumping = this.jumpInt != 0;
         this._canJump = !this._isJumping && this.timeSinceNotGrounded <= this.coyoteTime;
-        this._isDashing = this.dashInt == 1;
+        this._isDashing = this.dashInt != 0;
         this._canDash = this.curStamina > 0 && !this._isDashing;
     }
 
     private void InputHandler()
     {
-        if(this._canWalk)
+        if(!this._canWalk)
         {
-            if(Input.GetKey(this.settings.left)) 
-            {
-                this.leftRightInt = -1;
-                this.lastLeftRight = -1;
-            }
-
-            if(!Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right)) this.leftRightInt = 0;
-        
-            if(Input.GetKey(this.settings.right)) 
-            {
-                this.leftRightInt = 1;
-                this.lastLeftRight = 1;
-            }
+            this.leftRightInt = 0;
+            return;
         }
-        else this.leftRightInt = 0;
+
+        if(Input.GetKey(this.settings.left)) 
+        {
+            this.leftRightInt = -1;
+            this.lastLeftRight = -1;
+        }
+
+        if(!Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right)) this.leftRightInt = 0;
+        
+        if(Input.GetKey(this.settings.right)) 
+        {
+            this.leftRightInt = 1;
+            this.lastLeftRight = 1;
+        }
     }
 
     private void JumpHandler()
@@ -197,7 +199,7 @@ public class mCh_Mov : MonoBehaviour
             t += Time.deltaTime;
             this.rb.linearVelocityY = 0;
             this._clampVelocityX = false;
-            this.dashInt = 1;
+            this.dashInt = lastLeftRight;
             if(t > .1f && this.rb.linearVelocityX == 0) break;
             yield return null;
         }
@@ -234,7 +236,7 @@ public class mCh_Mov : MonoBehaviour
         (
             this.curMovSpeed * this.transform.right * Mathf.Abs(this.leftRightInt) +
             this.jumpForce * this.jumpInt * this.transform.up +
-            this.dashForce * this.dashInt * lastLeftRight * this.transform.right
+            this.dashForce * this.dashInt * this.transform.right
         );
 
         if(this.leftRightInt == 0) this.rb.linearVelocityX /= 1/this.deceleration;
