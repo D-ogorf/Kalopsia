@@ -7,7 +7,7 @@ public class ShowStuff : MonoBehaviour
 
     void Start()
     {
-        mCh = GameObject.Find("mCh");
+        mCh = GameObject.Find("player");
     }
     void Update()
     {

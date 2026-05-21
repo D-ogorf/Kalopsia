@@ -6,6 +6,7 @@ public class Gun_Shotgun : MonoBehaviour
     public float spread = 10;
     public GameObject pellet;
 
+    [HideInInspector] public Set_mCh settings;
     public void Update()
     {
         ShootHandler();

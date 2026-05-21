@@ -97,25 +97,17 @@ public class mCh_Mov : MonoBehaviour
 
     private void InputHandler()
     {
-        if(!this._canWalk)
+        if(!this._canWalk || !Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right))
         {
             this.leftRightInt = 0;
             return;
         }
 
-        if(Input.GetKey(this.settings.left)) 
-        {
-            this.leftRightInt = -1;
-            this.lastLeftRight = this.leftRightInt;
-        }
+        if(Input.GetKey(this.settings.left)) this.leftRightInt = -1;
 
-        if(!Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right)) this.leftRightInt = 0;
+        if(Input.GetKey(this.settings.right)) this.leftRightInt = 1;
 
-        if(Input.GetKey(this.settings.right)) 
-        {
-            this.leftRightInt = 1;
-            this.lastLeftRight = this.leftRightInt;
-        }
+        this.lastLeftRight = this.leftRightInt;
     }
 
     private void JumpHandler()
