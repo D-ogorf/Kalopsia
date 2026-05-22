@@ -63,7 +63,7 @@ public class Gun_Array : MonoBehaviour
     {
         for(int i = 0; i < weapons.Count(); i++)
         {
-            weapons[i].timeSinceLastAtack += Time.deltaTime;
+            this.weapons[i].timeSinceLastAtack += Time.deltaTime;
         }
     }
 
@@ -75,21 +75,21 @@ public class Gun_Array : MonoBehaviour
 
     private void StateChecker()
     {
-        _canShoot = weapons[curWeapon].timeSinceLastAtack >= 1 / weapons[curWeapon].curFireRate;
+        this._canShoot = this.weapons[curWeapon].timeSinceLastAtack >= 1 / this.weapons[curWeapon].curFireRate;
     }
 
     private void ShootHandler()
     {
-        if(weapons[curWeapon]._isAuto)
+        if(this.weapons[curWeapon]._isAuto)
         {
-            if(Input.GetKey(settings.shoot)) StartCoroutine(ShootBuffer());
+            if(Input.GetKey(this.settings.shoot)) StartCoroutine(ShootBuffer());
         }
         else
         {
-            if(Input.GetKeyDown(settings.shoot)) StartCoroutine(ShootBuffer());
+            if(Input.GetKeyDown(this.settings.shoot)) StartCoroutine(ShootBuffer());
         }
 
-        if(_wantShoot && _canShoot) Shoot();
+        if(this._wantShoot && this._canShoot) Shoot();
     }
 
     private IEnumerator ShootBuffer()
@@ -107,10 +107,10 @@ public class Gun_Array : MonoBehaviour
 
     private void Shoot()
     {
-        weapons[curWeapon].timeSinceLastAtack = 0;
-        for(int i = 0; i < weapons[curWeapon].bullets.Count(); i++)
+        this.weapons[curWeapon].timeSinceLastAtack = 0;
+        for(int i = 0; i < this.weapons[curWeapon].bullets.Count(); i++)
         {
-            StartCoroutine(SetBullet(weapons[curWeapon].bullets, i));
+            StartCoroutine(SetBullet(this.weapons[curWeapon].bullets, i));
         }
     }
 
