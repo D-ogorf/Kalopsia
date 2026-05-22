@@ -50,7 +50,7 @@ public class Set_mCh : MonoBehaviour
         try
         {
             this.player.GetComponent<mCh_Mov>().settings = this.GetComponent<Set_mCh>();
-            //this.player.GetComponentInChildren<Gun_Shotgun>().settings = this.GetComponent<Set_mCh>();
+            this.player.GetComponentInChildren<Gun_Array>().settings = this.GetComponent<Set_mCh>();
         }
         catch(Exception e)
         {
