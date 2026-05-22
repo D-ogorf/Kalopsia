@@ -108,6 +108,7 @@ public class Gun_Array : MonoBehaviour
     private void Shoot()
     {
         this.weapons[curWeapon].timeSinceLastAtack = 0;
+        
         for(int i = 0; i < this.weapons[curWeapon].bullets.Count(); i++)
         {
             StartCoroutine(SetBullet(this.weapons[curWeapon].bullets, i));
