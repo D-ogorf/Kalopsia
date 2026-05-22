@@ -107,6 +107,7 @@ public class Gun_Array : MonoBehaviour
 
     private void Shoot()
     {
+        weapons[curWeapon].timeSinceLastAtack = 0;
         for(int i = 0; i < weapons[curWeapon].bullets.Count(); i++)
         {
             StartCoroutine(SetBullet(weapons[curWeapon].bullets, i));
@@ -125,6 +126,6 @@ public class Gun_Array : MonoBehaviour
 
         GameObject bullet = Instantiate(b[i].bulletFX, b[i].spawnPoint.transform.position, Quaternion.identity);
         bullet.transform.localEulerAngles = new Vector3(0, 0, b[i].rotation);
-        bullet.GetComponent<Rigidbody2D>().linearVelocityX = b[i].speed;
+        bullet.GetComponent<Rigidbody2D>().linearVelocity = b[i].speed * bullet.transform.right;
     }
 }
