@@ -1,3 +1,6 @@
+using System.Collections;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [System.Serializable]
@@ -33,4 +36,28 @@ public class Gun_Array : MonoBehaviour
 {
     public Weapon[] weapons;
     public int curWeapon;
+
+    public Set_mCh settings;
+
+    private void Start()
+    {
+        StartCoroutine(IncreaseTimeSinceAtk());
+    }
+
+    private IEnumerator IncreaseTimeSinceAtk()
+    {
+        while(true)
+        {
+            IncreaseDeltaTime();
+            yield return null;
+        }
+    }
+
+    private void IncreaseDeltaTime()
+    {
+        for(int i = 0; i < weapons.Count(); i++)
+        {
+            weapons[i].timeSinceLastAtack += Time.deltaTime;
+        }
+    }
 }
