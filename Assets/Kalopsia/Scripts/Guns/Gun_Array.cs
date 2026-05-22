@@ -99,16 +99,16 @@ public class Gun_Array : MonoBehaviour
         while(t <= shootBuffer)
         {
             t += Time.deltaTime;
-            _wantShoot = true;
+            this._wantShoot = true;
             yield return null;
         }
-        _wantShoot = false;
+        this._wantShoot = false;
     }
 
     private void Shoot()
     {
         this.weapons[curWeapon].timeSinceLastAtack = 0;
-        
+
         for(int i = 0; i < this.weapons[curWeapon].bullets.Count(); i++)
         {
             StartCoroutine(SetBullet(this.weapons[curWeapon].bullets, i));
