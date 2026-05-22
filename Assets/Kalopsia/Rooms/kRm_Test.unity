@@ -973,6 +973,7 @@ MonoBehaviour:
   _canWalk: 0
   jumpForce: 400
   maxVelocityY: 10
+  bonusVelocityY: 5
   maxJumpTime: 0.4
   airMultiplier: 0.5
   jumpBuffer: 0.125
@@ -995,6 +996,7 @@ MonoBehaviour:
   _clampVelocityX: 1
   _clampVelocityY: 1
   timeSinceNotGrounded: 0
+  timeFalling: 0
   leftRightInt: 0
   lastLeftRight: 1
   upDownInt: 0
@@ -1050,7 +1052,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun_Shotgun
   pelletNum: 5
   spread: 10
+  shootCD: 0.85
   pellet: {fileID: 0}
+  timeSinceLastShoot: 0
+  shootBuffer: 0.125
+  _wantShoot: 0
+  _canShoot: 0
   settings: {fileID: 0}
 --- !u!1 &1310647201
 GameObject:
@@ -1118,6 +1125,8 @@ MonoBehaviour:
   right: 0
   jump: 0
   dash: 0
+  shoot: 0
+  altFire: 0
 --- !u!1 &1525372209
 GameObject:
   m_ObjectHideFlags: 0

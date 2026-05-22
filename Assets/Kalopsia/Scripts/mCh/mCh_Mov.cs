@@ -79,7 +79,7 @@ public class mCh_Mov : MonoBehaviour
     void Update()
     {
         StateChecker();
-        InputHandler();
+        WalkHandler();
         JumpHandler();
         FallingHandler();
         CoyoteHandler();
@@ -98,7 +98,7 @@ public class mCh_Mov : MonoBehaviour
         this._canDash = this.curStamina > 0 && !this._isDashing && !this._isDashInCD;
     }
 
-    private void InputHandler()
+    private void WalkHandler()
     {
         if(!this._canWalk || !Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right))
         {

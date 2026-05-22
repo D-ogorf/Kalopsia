@@ -33,6 +33,9 @@ public class Set_mCh : MonoBehaviour
         this.right = KeyCode.D;
         this.jump = KeyCode.Space;
         this.dash = KeyCode.LeftShift;
+
+        this.shoot = KeyCode.Mouse0;
+        this.altFire = KeyCode.Mouse1;
     
         TransferSettings();
     }
@@ -47,7 +50,7 @@ public class Set_mCh : MonoBehaviour
         try
         {
             this.player.GetComponent<mCh_Mov>().settings = this.GetComponent<Set_mCh>();
-            this.player.GetComponentInChildren<Gun_Shotgun>().settings = this.GetComponent<Set_mCh>();
+            //this.player.GetComponentInChildren<Gun_Shotgun>().settings = this.GetComponent<Set_mCh>();
         }
         catch(Exception e)
         {
