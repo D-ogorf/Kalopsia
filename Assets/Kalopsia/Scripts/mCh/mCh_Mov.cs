@@ -19,6 +19,7 @@ public class mCh_Mov : MonoBehaviour
     [Header("Jump")]
     public float jumpForce = 400; // Força do pulo
     public float maxVelocityY = 10; // Velocidade máxima Y
+    public float bonusVelocityY = 5;
 
     public float maxJumpTime = .4f; // Tempo máximo que pode pular
     public float airMultiplier = .5f; // Multiplicador no ar
@@ -52,6 +53,7 @@ public class mCh_Mov : MonoBehaviour
     public bool _clampVelocityY = true; // Limitar velocidade Y?
 
     [HideInInspector] public float timeSinceNotGrounded; // Tempo desde que não está no chão
+    [HideInInspector] public float timeFalling; // Tempo que está caindo
 
     [HideInInspector] public sbyte leftRightInt; // Direção atual (Esquerda/Direita)
     [HideInInspector] public sbyte lastLeftRight = 1; // Última direção (Esquerda/Direita)
@@ -79,6 +81,7 @@ public class mCh_Mov : MonoBehaviour
         StateChecker();
         InputHandler();
         JumpHandler();
+        FallingHandler();
         CoyoteHandler();
         StaminaHandler();
         DashHandler();
@@ -146,6 +149,12 @@ public class mCh_Mov : MonoBehaviour
         }
         if(t < this.maxJumpTime) this.rb.linearVelocityY /= 5;
         this.jumpInt = 0;
+    }
+
+    private void FallingHandler()
+    {
+        if(rb.linearVelocityY < 0.1f) this.timeFalling += Time.deltaTime;
+        else this.timeFalling = 0;
     }
 
     private void CoyoteHandler()
@@ -256,6 +265,6 @@ public class mCh_Mov : MonoBehaviour
         if(this.leftRightInt == 0) this.rb.linearVelocityX /= 1/this.deceleration;
 
         if(this._clampVelocityX) this.rb.linearVelocityX = Mathf.Clamp(this.rb.linearVelocityX, -this.maxVelocityX, this.maxVelocityX);
-        if(this._clampVelocityY) this.rb.linearVelocityY = Mathf.Clamp(this.rb.linearVelocityY, -this.maxVelocityY, this.maxVelocityY); 
+        if(this._clampVelocityY) this.rb.linearVelocityY = Mathf.Clamp(this.rb.linearVelocityY, -(Mathf.Clamp(Mathf.Abs(this.rb.linearVelocityY) * this.bonusVelocityY, 0, this.bonusVelocityY) + this.maxVelocityY), this.maxVelocityY);
     }
 }
