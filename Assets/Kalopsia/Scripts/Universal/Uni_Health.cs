@@ -2,15 +2,22 @@ using UnityEngine;
 
 public class Uni_Health : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public float maxHP;
+    public float curHP;
+    public float[] defense;
+
+    public bool _isDead;
+
     void Start()
     {
-        
+        defense = new float[10];
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckIfDead()
     {
-        
+        if(curHP <= 0)
+        {
+            _isDead = true;
+        }
     }
 }
