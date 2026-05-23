@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [System.Serializable]
 public class Weapon
@@ -29,7 +30,7 @@ public class Bullets
     public float speed;
     public float delay;
     public float rotation;
-    public float innacuracy;
+    public int innacuracy; // percentagem
 
     public GameObject bulletFX;
     public ParticleSystem blastFX;
@@ -119,14 +120,14 @@ public class Gun_Array : MonoBehaviour
     {
         float t = 0;
 
-        while(t <= b[i].delay)
+        while(t < b[i].delay)
         {
             t += Time.deltaTime;
             yield return null;
         }
 
         GameObject bullet = Instantiate(b[i].bulletFX, b[i].spawnPoint.transform.position, Quaternion.identity);
-        bullet.transform.localEulerAngles = new Vector3(0, 0, b[i].rotation);
+        bullet.transform.localEulerAngles = new Vector3(0, 0, b[i].rotation + b[i].rotation * (1 + (-b[i].innacuracy/2 + Mathf.Round(Time.time * 1000) % 100 / 100 * b[i].innacuracy/2)));
         bullet.GetComponent<Rigidbody2D>().linearVelocity = b[i].speed * bullet.transform.right;
     }
 }
