@@ -3,14 +3,14 @@ using UnityEngine.UI;
 
 public class ShowStuff : MonoBehaviour
 {
-    public GameObject mCh; // Player
+    public GameObject player;
 
     void Start()
     {
-        mCh = GameObject.Find("player");
+        player = GameObject.Find("player");
     }
     void Update()
     {
-        GetComponent<Text>().text = "Stamina: " + mCh.GetComponent<mCh_Mov>().curStamina;
+        GetComponent<Text>().text = "Stamina: " + player.GetComponent<mCh_Mov>().curStamina + " Vel: " + player.GetComponent<Rigidbody2D>().linearVelocity;
     }
 }

@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a15f2bb13702340b1f115403a857cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowStuff
-  mCh: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,9 +1322,53 @@ MonoBehaviour:
       dmgType: 0
       ammoType: 0
       ammoCost: 0
-      speed: 10
+      speed: 50
       delay: 0
-      rotation: 45
+      rotation: 0
+      innacuracy: 0
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      spawnPoint: {fileID: 61387169}
+    - dmg: 0
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: 2.5
+      innacuracy: 0
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      spawnPoint: {fileID: 61387169}
+    - dmg: 0
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: -2.5
+      innacuracy: 0
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      spawnPoint: {fileID: 61387169}
+    - dmg: 0
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: 1.25
+      innacuracy: 0
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      spawnPoint: {fileID: 61387169}
+    - dmg: 0
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: -1.25
       innacuracy: 0
       bulletFX: {fileID: 223058851}
       blastFX: {fileID: 0}
