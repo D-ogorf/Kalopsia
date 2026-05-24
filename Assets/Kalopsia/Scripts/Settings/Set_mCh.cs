@@ -47,14 +47,8 @@ public class Set_mCh : MonoBehaviour
 
     private void TransferSettings()
     {
-        try
-        {
-            this.player.GetComponent<mCh_Mov>().settings = this.GetComponent<Set_mCh>();
-            this.player.GetComponentInChildren<Gun_Array>().settings = this.GetComponent<Set_mCh>();
-        }
-        catch(Exception e)
-        {
-            print(e);
-        }
+        this.player.GetComponent<mCh_Mov>().settings = this.GetComponent<Set_mCh>();
+        this.player.GetComponentInChildren<Gun_Array>().settings = this.GetComponent<Set_mCh>();
+        this.player.GetComponentInChildren<Gun_Pos>().settings = this.GetComponent<Set_mCh>();
     }
 }

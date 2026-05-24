@@ -20,12 +20,12 @@ public class Gun_Bullet : MonoBehaviour
     private void ApplyOnHitFX(GameObject e)
     {
         Uni_Health h = e.GetComponent<Uni_Health>();
-        h.curHP -= dmg * (1 - h.defense[dmgType]);
+        h.curHP -= this.dmg * (1 - h.defense[this.dmgType]);
         h.CheckIfDead();
     }
 
     private void DestroySelf()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 }
