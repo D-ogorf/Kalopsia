@@ -12,9 +12,9 @@ public class mCh_Mov : MonoBehaviour
     [Range(0, 1)] public float acceleration = .575f; // Tempo que demora para acelerar
     [Range(0, 1)] public float deceleration = .885f; // Tempo que demora para desacelerar
 
-    public bool _isGrounded; // Está no chão?
-    public bool _isWalking; // Está andando?
-    public bool _canWalk; // Pode andar
+    [HideInInspector] public bool _isGrounded; // Está no chão?
+    [HideInInspector] public bool _isWalking; // Está andando?
+    [HideInInspector] public bool _canWalk; // Pode andar
 
     [Header("Jump")]
     public float jumpForce = 400; // Força do pulo
@@ -26,9 +26,9 @@ public class mCh_Mov : MonoBehaviour
     public float jumpBuffer = .125f; // Buffer de pulo
     public float coyoteTime = .125f; // Coyote time
 
-    public bool _isJumping; // Está pulando?
-    public bool _wantJump; // Quer pular?
-    public bool _canJump; // Pode pular?
+    [HideInInspector] public bool _isJumping; // Está pulando?
+    [HideInInspector] public bool _wantJump; // Quer pular?
+    [HideInInspector] public bool _canJump; // Pode pular?
 
     [Header("Dash")]
     public float dashForce = 230; // Força do dash
@@ -37,14 +37,14 @@ public class mCh_Mov : MonoBehaviour
     public float timeToUseDash = .45f; // Tempo que demora para poder usar dash
     public float dashBuffer = .125f; // Buffer de dash
 
-    public bool _isDashing; // Está dando dash?
-    public bool _wantDash; // Quer dar dash?
-    public bool _isDashInCD; // Dash está em cooldown?
-    public bool _canDash = true; // Pode dar dash?
+    [HideInInspector] public bool _isDashing; // Está dando dash?
+    [HideInInspector] public bool _wantDash; // Quer dar dash?
+    [HideInInspector] public bool _isDashInCD; // Dash está em cooldown?
+    [HideInInspector] public bool _canDash = true; // Pode dar dash?
     
     [Header("Stamina")]
     public int maxStamina = 3; // Stamina máxima
-    public int curStamina; // Stamina atual
+    [HideInInspector] public int curStamina; // Stamina atual
     public float timeToRegenStamina = 1.15f; // Tempo que demora para regenerar uma barra de stamina
     public float curStaminaRegenTime; // Tempo de regeneração do dash atual
 

@@ -2,7 +2,11 @@ using UnityEngine;
 
 public class Gun_Pos : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public bool _lookingUp;
+    public bool _lookingDown;
+    public bool _lookingLeft;
+    public bool _lookingRight;
+
     void Start()
     {
         
