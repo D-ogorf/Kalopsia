@@ -225,7 +225,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun_Pos
   leftRightInt: 0
   upDownInt: 0
+  distFromCenter: {x: 1, y: 1}
   settings: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &189598834
 GameObject:
   m_ObjectHideFlags: 0
