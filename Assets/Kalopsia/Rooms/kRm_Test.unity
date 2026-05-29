@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 61387170}
   - component: {fileID: 61387171}
   - component: {fileID: 61387172}
+  - component: {fileID: 61387173}
   m_Layer: 3
   m_Name: playerGun
   m_TagString: Untagged
@@ -145,13 +146,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61387169}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.82530683, w: 0.56468457}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 326397981}
   m_Father: {fileID: 852819057}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -111.239}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!212 &61387171
 SpriteRenderer:
   serializedVersion: 2
@@ -228,6 +230,89 @@ MonoBehaviour:
   distFromCenter: {x: 1, y: 1}
   settings: {fileID: 0}
   player: {fileID: 0}
+--- !u!114 &61387173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61387169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f1c092a57f7ec94e80e2b13f44098ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Gun_Array
+  weapons:
+  - weaponName: 
+    minimumFireRate: 2
+    maximumFireRate: 2
+    shotsToBuildUp: 0
+    _isAuto: 0
+    _hasWeapon: 0
+    timeSinceLastAtack: 0
+    curFireRate: 2
+    bullets:
+    - dmg: 50
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: 0
+      innacuracy: 10
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      relativeSpawnPoint: {x: 0, y: 0, z: 0}
+    - dmg: 50
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: 2.5
+      innacuracy: 10
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      relativeSpawnPoint: {x: 0, y: 0, z: 0}
+    - dmg: 50
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: -2.5
+      innacuracy: 10
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      relativeSpawnPoint: {x: 0, y: 0, z: 0}
+    - dmg: 50
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: 1.25
+      innacuracy: 10
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      relativeSpawnPoint: {x: 0, y: 0, z: 0}
+    - dmg: 50
+      dmgType: 0
+      ammoType: 0
+      ammoCost: 0
+      speed: 50
+      delay: 0
+      rotation: -1.25
+      innacuracy: 10
+      bulletFX: {fileID: 223058851}
+      blastFX: {fileID: 0}
+      relativeSpawnPoint: {x: 0, y: 0, z: 0}
+  curWeapon: 0
+  _wantShoot: 0
+  _canShoot: 0
+  shootBuffer: 0.125
+  settings: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!1 &189598834
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1068,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &326397980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326397981}
+  m_Layer: 3
+  m_Name: gunSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326397981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326397980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 61387170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &350239412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1641,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1057253981}
-  - component: {fileID: 1057253982}
   m_Layer: 3
   m_Name: playerBag
   m_TagString: Untagged
@@ -1548,89 +1663,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 852819057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1057253982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057253980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1c092a57f7ec94e80e2b13f44098ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Gun_Array
-  weapons:
-  - weaponName: 
-    minimumFireRate: 2
-    maximumFireRate: 2
-    shotsToBuildUp: 0
-    _isAuto: 0
-    _hasWeapon: 0
-    timeSinceLastAtack: 0
-    curFireRate: 2
-    bullets:
-    - dmg: 50
-      dmgType: 0
-      ammoType: 0
-      ammoCost: 0
-      speed: 50
-      delay: 0
-      rotation: 0
-      innacuracy: 10
-      bulletFX: {fileID: 223058851}
-      blastFX: {fileID: 0}
-      spawnPoint: {fileID: 61387169}
-    - dmg: 50
-      dmgType: 0
-      ammoType: 0
-      ammoCost: 0
-      speed: 50
-      delay: 0
-      rotation: 2.5
-      innacuracy: 10
-      bulletFX: {fileID: 223058851}
-      blastFX: {fileID: 0}
-      spawnPoint: {fileID: 61387169}
-    - dmg: 50
-      dmgType: 0
-      ammoType: 0
-      ammoCost: 0
-      speed: 50
-      delay: 0
-      rotation: -2.5
-      innacuracy: 10
-      bulletFX: {fileID: 223058851}
-      blastFX: {fileID: 0}
-      spawnPoint: {fileID: 61387169}
-    - dmg: 50
-      dmgType: 0
-      ammoType: 0
-      ammoCost: 0
-      speed: 50
-      delay: 0
-      rotation: 1.25
-      innacuracy: 10
-      bulletFX: {fileID: 223058851}
-      blastFX: {fileID: 0}
-      spawnPoint: {fileID: 61387169}
-    - dmg: 50
-      dmgType: 0
-      ammoType: 0
-      ammoCost: 0
-      speed: 50
-      delay: 0
-      rotation: -1.25
-      innacuracy: 10
-      bulletFX: {fileID: 223058851}
-      blastFX: {fileID: 0}
-      spawnPoint: {fileID: 61387169}
-  curWeapon: 0
-  _wantShoot: 0
-  _canShoot: 0
-  shootBuffer: 0.125
-  settings: {fileID: 0}
-  gun: {fileID: 0}
 --- !u!1 &1310647201
 GameObject:
   m_ObjectHideFlags: 0

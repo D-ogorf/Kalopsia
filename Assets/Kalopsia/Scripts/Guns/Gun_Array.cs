@@ -35,7 +35,7 @@ public class Bullets
 
     public GameObject bulletFX;
     public ParticleSystem blastFX;
-    public GameObject spawnPoint;
+    public Vector3 relativeSpawnPoint;
 }
 public class Gun_Array : MonoBehaviour
 {
@@ -46,13 +46,13 @@ public class Gun_Array : MonoBehaviour
     public float shootBuffer;
 
     public Set_mCh settings;
-    public GameObject gun;
+    public GameObject spawnPoint;
 
     private void Start()
     {
         StartCoroutine(IncreaseTimeSinceAtk());
 
-        this.gun = GameObject.Find("playerGun");
+        this.spawnPoint = GameObject.Find("gunSpawn");
     }
 
     private IEnumerator IncreaseTimeSinceAtk()
@@ -130,18 +130,18 @@ public class Gun_Array : MonoBehaviour
             yield return null;
         }
 
-        GameObject bullet = Instantiate(b[i].bulletFX, b[i].spawnPoint.transform.position, quaternion.identity);
+        GameObject bullet = Instantiate(b[i].bulletFX, spawnPoint.transform.position + b[i].relativeSpawnPoint, quaternion.identity);
         Gun_Bullet prop = bullet.GetComponent<Gun_Bullet>();
 
         prop.dmg = b[i].dmg;
         prop.dmgType = b[i].dmgType;
 
-        Vector2 Posdiff = this.transform.position - bullet.transform.position;
-        Posdiff.Normalize();  
-        float rotZ = Mathf.Atan2(Posdiff.y, Posdiff.x) * Mathf.Rad2Deg;
-        bullet.transform.rotation = Quaternion.Euler(0f, 0f, rotZ - 180f);
-
-        bullet.transform.localEulerAngles += new Vector3(0, 0, b[i].rotation + b[i].rotation * (1 + (-b[i].innacuracy/2 + Mathf.Round(Time.time * 1000) % 100 / 100 * b[i].innacuracy/2)));
+        bullet.transform.localEulerAngles = new Vector3(0, 0, transform.localEulerAngles.z -180 + b[i].rotation + Innacuracy(b, i));
         bullet.GetComponent<Rigidbody2D>().linearVelocity = b[i].speed * bullet.transform.right;
+    }
+
+    private static float Innacuracy(Bullets[] b, int i)
+    {
+        return b[i].rotation * (1 + (-b[i].innacuracy/2 + Mathf.Round(Time.time * 1000) % 100 / 100 * b[i].innacuracy/2));
     }
 }
