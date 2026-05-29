@@ -55,7 +55,7 @@ public class Gun_Pos : MonoBehaviour
 
     private void PosChange()
     {
-        this.transform.localPosition = new Vector2(this.distFromCenter.x * this.leftRightInt, this.distFromCenter.y * this.upDownInt).normalized;
+        this.transform.localPosition = new Vector2(this.distFromCenter.x * this.leftRightInt, this.distFromCenter.y * this.upDownInt);
     }
 
     private void RotChange()
