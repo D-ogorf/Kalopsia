@@ -5,6 +5,7 @@ public class Gun_Pos : MonoBehaviour
     public sbyte leftRightInt;
     public sbyte upDownInt;
     public Vector2 distFromCenter;
+    public bool _isLocked;
     [HideInInspector] public Set_mCh settings;
     [HideInInspector] public mCh_Mov player;
 
@@ -27,6 +28,8 @@ public class Gun_Pos : MonoBehaviour
             ChangeUpDown();
             ChangeLeftRight();
         }
+
+        this._isLocked = Input.GetKey(this.settings.lockAim);
     }
 
     private void ChangeLeftRight()

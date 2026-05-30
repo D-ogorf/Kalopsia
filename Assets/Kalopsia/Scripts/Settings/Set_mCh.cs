@@ -18,6 +18,7 @@ public class Set_mCh : MonoBehaviour
 
     public KeyCode shoot; // Atirar
     public KeyCode altFire; // Tiro alternativo
+    public KeyCode lockAim; // Mirar
     void Awake()
     {
         player = GameObject.Find("player");
@@ -36,6 +37,7 @@ public class Set_mCh : MonoBehaviour
 
         this.shoot = KeyCode.Mouse0;
         this.altFire = KeyCode.Mouse1;
+        this.lockAim = KeyCode.LeftShift;
     
         TransferSettings();
     }
