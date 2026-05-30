@@ -110,6 +110,7 @@ public class mCh_Mov : MonoBehaviour
 
         if(Input.GetKey(this.settings.right) && !Input.GetKey(this.settings.left)) this.leftRightInt = 1;
 
+        if(Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right) || Input.GetKey(this.settings.right) && !Input.GetKey(this.settings.left))
         this.lastLeftRight = this.leftRightInt;
     }
 
@@ -117,10 +118,7 @@ public class mCh_Mov : MonoBehaviour
     {
         if(Input.GetKeyDown(this.settings.jump)) StartCoroutine(JumpBuffer());
 
-        if(this._wantJump && this._canJump)
-        {
-            StartCoroutine(Jumping());
-        }
+        if(this._wantJump && this._canJump) StartCoroutine(Jumping());
     }
 
     private IEnumerator JumpBuffer()

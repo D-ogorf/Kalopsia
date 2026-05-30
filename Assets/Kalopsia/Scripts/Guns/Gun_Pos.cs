@@ -31,7 +31,7 @@ public class Gun_Pos : MonoBehaviour
 
     private void ChangeLeftRight()
     {
-        if(this.upDownInt != 0 && this.player.leftRightInt == 0)
+        if(this.upDownInt != 0 && this.player.leftRightInt == 0 && !Input.GetKey(this.settings.left) && !Input.GetKey(this.settings.right))
         {
             this.leftRightInt = 0;
             return;
