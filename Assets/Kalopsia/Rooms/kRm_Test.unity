@@ -228,6 +228,7 @@ MonoBehaviour:
   leftRightInt: 0
   upDownInt: 0
   distFromCenter: {x: 1, y: 1.5}
+  _isLocked: 0
   settings: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &61387173
@@ -269,7 +270,7 @@ MonoBehaviour:
       ammoCost: 0
       speed: 50
       delay: 0
-      rotation: 2.5
+      rotation: 1.5
       innacuracy: 10
       bulletFX: {fileID: 223058851}
       blastFX: {fileID: 0}
@@ -280,7 +281,7 @@ MonoBehaviour:
       ammoCost: 0
       speed: 50
       delay: 0
-      rotation: -2.5
+      rotation: -1.5
       innacuracy: 10
       bulletFX: {fileID: 223058851}
       blastFX: {fileID: 0}
@@ -291,7 +292,7 @@ MonoBehaviour:
       ammoCost: 0
       speed: 50
       delay: 0
-      rotation: 1.25
+      rotation: 0.75
       innacuracy: 10
       bulletFX: {fileID: 223058851}
       blastFX: {fileID: 0}
@@ -302,7 +303,7 @@ MonoBehaviour:
       ammoCost: 0
       speed: 50
       delay: 0
-      rotation: -1.25
+      rotation: -0.75
       innacuracy: 10
       bulletFX: {fileID: 223058851}
       blastFX: {fileID: 0}
@@ -1731,6 +1732,7 @@ MonoBehaviour:
   dash: 0
   shoot: 0
   altFire: 0
+  lockAim: 0
 --- !u!1 &1525372209
 GameObject:
   m_ObjectHideFlags: 0

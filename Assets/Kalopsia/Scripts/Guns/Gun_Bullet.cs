@@ -20,6 +20,12 @@ public class Gun_Bullet : MonoBehaviour
     {
         DestroySelf();
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        DestroySelf();
+    }
+
     private void ApplyOnHitFX(GameObject e)
     {
         Uni_Health h = e.GetComponent<Uni_Health>();
